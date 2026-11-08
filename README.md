@@ -1,37 +1,94 @@
-# Agent Memory Systems Skill
+# claude-agent-memory-systems-skill
 
-A Claude skill focused on the architecture of memory for intelligent agents. It explains how short-term, working, episodic, semantic, procedural, and long-term memory fit into an agent system, with particular attention to retrieval quality.
+A Claude Code skill for designing memory architectures that help AI agents retain, organize, and retrieve useful information over time.
 
-## What This Skill Covers
+## Overview
 
-- Choosing memory types for different information and tasks.
-- Designing short-term and long-term memory components.
-- Selecting vector stores and retrieval approaches.
-- Applying chunking strategies that support useful retrieval.
-- Thinking about memory formation, decay, and conflict handling.
-- Avoiding common failures such as storing everything forever or using one memory type for all data.
+Agent memory is more than persistent storage. A system may store large amounts of information and still fail if it cannot retrieve the right knowledge at the right moment.
 
-## Repository Structure
+This skill covers memory types, storage choices, chunking, embeddings, retrieval, temporal relevance, conflict resolution, and evaluation.
 
-- `SKILL.md`: Skill definition, capabilities, design patterns, anti-patterns, and common memory-system pitfalls.
-- `LICENSE`: MIT License for this repository.
+## Memory Types
 
-## Core Idea
+| Type | Purpose |
+|---|---|
+| Short-term | Current interaction and active context |
+| Working | Information needed for the current task |
+| Episodic | Records of events and past interactions |
+| Semantic | Stable facts and concepts |
+| Procedural | Reusable workflows and instructions |
+| Long-term | Durable knowledge across sessions |
 
-Persistent storage alone does not make an agent remember well. The system must retrieve the right information at the right time. Chunking, embeddings, metadata, temporal relevance, and retrieval evaluation all affect whether stored knowledge is useful during a later interaction.
+Not every agent needs every memory type. Select based on the task, retention period, and retrieval requirements.
 
-## When to Use It
+## Main Capabilities
 
-Use this skill when designing an agent memory architecture, comparing retrieval strategies, diagnosing inconsistent answers, or deciding how to represent different kinds of knowledge. It is also useful when reviewing a system that stores substantial information but retrieves irrelevant or incomplete context.
+- Design short-term and long-term memory.
+- Choose memory representations and storage.
+- Plan chunking and metadata.
+- Select embedding and retrieval strategies.
+- Rank results by relevance and recency.
+- Handle stale and conflicting information.
+- Control memory formation and decay.
+- Evaluate retrieval quality.
+- Diagnose memory-related failures.
 
-## Getting Started
+## Installation
 
-1. Add the skill to a Claude-compatible skills environment.
-2. Describe the agent's memory requirements and the information it needs to retain.
-3. Select memory types based on usage and lifetime.
-4. Design chunking and retrieval together, then test retrieval against realistic queries.
-5. Review memory quality over time and address conflicts, staleness, and irrelevant results.
+```bash
+git clone https://github.com/Brajesh31/claude-agent-memory-systems-skill.git ~/.claude/skills/agent-memory-systems
+```
 
-## License
+## Usage
 
-Released under the MIT License. See [LICENSE](LICENSE) for details.
+Invoke the skill when designing or improving agent memory:
+
+```text
+/agent-memory-systems
+```
+
+Provide the agent's use case, information types, expected retention, query patterns, data volume, and privacy constraints.
+
+## Recommended Design Workflow
+
+1. Identify what the agent needs to remember.
+2. Separate temporary context from durable knowledge.
+3. Choose memory types based on information use.
+4. Define write and update policies.
+5. Design chunking and metadata together.
+6. Select storage and retrieval mechanisms.
+7. Rank results using relevance and temporal context.
+8. Handle stale, duplicate, and contradictory records.
+9. Evaluate retrieval with realistic queries.
+10. Monitor memory quality as the system evolves.
+
+## Retrieval Quality
+
+Evaluate whether the system retrieves:
+
+- The correct information.
+- Enough context to interpret it.
+- The most relevant and current version.
+- The right information for the current task.
+- No unnecessary sensitive or unrelated records.
+
+Measure retrieval quality independently from answer generation. Otherwise, a retrieval failure may be mistaken for a model reasoning problem.
+
+## Common Failure Modes
+
+- Storing everything without a retention policy.
+- Using one memory type for every kind of information.
+- Creating chunks that lose important context.
+- Relying on embeddings without useful metadata.
+- Ignoring recency and version conflicts.
+- Retrieving too much context.
+- Failing to evaluate retrieval with real queries.
+
+## Repository Contents
+
+- `SKILL.md`: Main agent memory architecture guidance.
+- `README.md`: Memory types, design workflow, and retrieval checklist.
+
+## Practical Principle
+
+A memory system succeeds when it retrieves useful knowledge at the right time. Storage capacity alone is not a measure of intelligence.
